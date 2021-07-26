@@ -1,25 +1,78 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import './assets/css/main.css';
+
+import API from './lib/API';
+import Recept from './components/Recept';
+import Agenda from './components/Agenda';
+import Header from './components/Header';
+
+
+class App extends Component {
+
+  componentDidMount() {
+
+    // API.fetchData('https://')
+    //   .then( data => {
+    //     console.log(data);
+    //     this.setState({ data: data })
+    //   })
+    //   .catch( error => {
+    //     console.log(error)
+    //   })
+
+  }
+
+
+
+  render() {
+
+
+
+    return (
+
+      <React.Fragment>
+        <Container fluid>
+          <Row>
+          <Col xs="12" md="12">
+            <Header></Header>
+          </Col>
+          </Row>
+
+          <Row>
+            <Col xs="12" md="4">
+              <Row>
+                <Col xs="12" md="12" >
+                  <Agenda></Agenda>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs="12" md="12" ></Col>
+              </Row>
+            </Col>
+
+            <Col xs="12" md="8">
+              <Row>
+                <Col xs="12" md="12" >
+                  <Recept></Recept>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs="12" md="12" ></Col>
+              </Row>
+            </Col>
+          </Row>
+
+        </Container>
+      </React.Fragment>
+
+    )
+  }
+
 }
+
+
 
 export default App;
