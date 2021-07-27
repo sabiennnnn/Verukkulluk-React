@@ -1,0 +1,35 @@
+/** AGENDA **/
+.agenda {
+    background-color: var(--lighter-green);
+    padding: 30px;
+    padding-inline-start: 0;
+    text-align: center;
+}
+
+.agenda img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.agenda .omschr {
+    width: 80%;
+}
+
+.agenda ul li {
+    list-style: none;
+    display: flex;
+    text-align: left
+}
+
+.agenda ul li .icon-a {
+    width: 20%;
+}
+
+.agenda ul li h2 {
+    width: 100%;
+}
+
+.agenda ul li p {
+    font-size: small;
+    width: 100%;
+}

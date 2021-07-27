@@ -71,11 +71,26 @@ html, body {
     justify-content: space-between;
 }
 
+.flex-st {
+    display: flex;
+    justify-content: flex-start;
+}
+
+button {
+    padding: 0px 30px;
+    background-color: var(--lighter-red);
+    color: white;
+    font-family: var(--heading) !important;
+    font-size: xx-large !important;
+    border-radius: 25px !important;
+    border: 0px;
+}
+
 /** RECEPT **/
 
 .recept-kaart {
     display: flex;
-    box-shadow: 1px 1px 4px #c9c9c9;
+    box-shadow: 0px 0px 4px #c9c9c9;
 }
 
 .recept-foto {
@@ -112,6 +127,24 @@ html, body {
     margin-top: 19px;
 }
 
+.recept-details .keuken {
+    padding: 10px 0px;
+}
+
+
+.recept-details .keuken h4 {
+    color: var(--darker-green);
+}
+
+.recept-details .keuken p {
+    font-size: small;
+}
+
+.recept-details .beschrijving {
+    font-size: small;
+    margin-bottom: 26px;
+}
+
 .info-list { 
     list-style: none;
     padding-inline-start: 0 !important;
@@ -129,38 +162,24 @@ html, body {
 }
 
 
-/** AGENDA **/
-.agenda {
-    background-color: var(--lighter-green);
-    padding: 30px;
-    padding-inline-start: 0;
-    text-align: center;
+.tab-content {
+    box-shadow: 0px 0px 4px #c9c9c9;
 }
 
-.agenda img {
-    width: 150px;
-    margin-bottom: 20px;
+.nav-item {
+    box-shadow: 0px 0px 4px #c9c9c9;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
 }
 
-.agenda .omschr {
-    width: 80%;
+.nav-item .nav-link {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    color: var(--darker-green);
+    font-family: var(--heading) !important;
+    font-size: x-large !important;
 }
 
-.agenda ul li {
-    list-style: none;
-    display: flex;
-    text-align: left
-}
-
-.agenda ul li .icon-a {
-    width: 20%;
-}
-
-.agenda ul li h2 {
-    width: 100%;
-}
-
-.agenda ul li p {
-    font-size: small;
-    width: 100%;
+.nav-item .nav-link:hover {
+    color: black;
 }
