@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Media } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faEuroSign } from '@fortawesome/free-solid-svg-icons';
+import { faFire } from '@fortawesome/free-solid-svg-icons';
 
 export default class Recept extends Component {
 
@@ -12,6 +16,7 @@ export default class Recept extends Component {
             datumToegevoegd: "26-07-2021",
             prijs: 12,
             personen: 4,
+            calorieen: 432
         }
 
         return (
@@ -21,32 +26,34 @@ export default class Recept extends Component {
                 <div className="recept-kaart">
                     <div className="recept-foto"></div>
                         
-                        
-                    
+
                     <div  className="recept-details">
-                         <div className="recept-info">  
-                            <div>
-                                <img></img>
-                                <p>{data.personen}</p>
-                            </div>
-                            <div>
-                                <img></img>
-                                <p>{data.prijs}</p>
-                            </div>
-                            <div>
-                                <img></img>
-                                <p>{data.personen}</p>
-                            </div>
+                         <div className="recept-info"> 
+                            <ul className="info-list">
+                                <li><FontAwesomeIcon icon={faUserFriends} color="var(--darker-red)" /><p>{data.personen}</p></li>
+                                <li><FontAwesomeIcon icon={faEuroSign} color="var(--darker-red)" /><p>{data.prijs}</p></li>
+                                <li><FontAwesomeIcon icon={faFire} color="var(--darker-red)" /><p>{data.calorieen}</p></li>
+                            </ul>
                         </div> 
                         
-                        <section>
+                        <section className="titelBe flex">
                             <h1>{data.titel}</h1>
-                            <div>
-                                
+                            <div className="stars">
+                                <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
+                                <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
+                                <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
+                                <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
+                                <FontAwesomeIcon icon={faStar} color="beige"/>
                             </div>
                         </section>
                         
-                        {data.beschrijving}
+                        <section>{data.beschrijving}</section>
+
+                        <div>
+                            <button>Op Lijst</button>
+                            <i></i>
+                        </div>
+
                     </div>
                 </div>
 

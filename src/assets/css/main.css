@@ -66,28 +66,22 @@ html, body {
     padding-left: 0 !important;
 }
 
-/** HEADER **/
-
-.hero-foto{
-    background-image: url('https://images.unsplash.com/photo-1520072959219-c595dc870360?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1453&q=80');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 60vh;
-    margin: 0 !important;
-    margin-bottom: 40px;
+.flex {
+    display: flex;
+    justify-content: space-between;
 }
 
 /** RECEPT **/
 
 .recept-kaart {
     display: flex;
+    box-shadow: 1px 1px 4px #c9c9c9;
 }
 
 .recept-foto {
     width: 45%;
     margin: auto;
-    height: 50vh;
+    height: 60vh;
     background-image: url('https://images.unsplash.com/photo-1520072959219-c595dc870360?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1453&q=80');
     background-position: center;
     background-size: cover;
@@ -95,21 +89,78 @@ html, body {
 }
 
 .recept-details {
-    background-color: #dc3439;
     width: 55%;
     margin: auto;
+    padding: 20px 40px;
 }
 
 .recept-info {
     display: flex;
 }
 
-.recept-info div {
-    width: 16%;
+.recept-details .titelBe {
+    vertical-align: middle;
+}
+
+.recept-details .titelBe h1 {
+    color: var(--darker-green);
+}
+
+.recept-details .titelBe .stars {
+
+    height: 30px !important;
+    margin-top: 19px;
+}
+
+.info-list { 
+    list-style: none;
+    padding-inline-start: 0 !important;
+}
+
+.info-list li { 
+    float: left;
+    padding: 16px 24px 16px 0px;
+    display: flex;
+}
+
+.info-list li p { 
+    margin-left: 6px;
+    margin-top: -4px;
 }
 
 
 /** AGENDA **/
 .agenda {
     background-color: var(--lighter-green);
+    padding: 30px;
+    padding-inline-start: 0;
+    text-align: center;
+}
+
+.agenda img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.agenda .omschr {
+    width: 80%;
+}
+
+.agenda ul li {
+    list-style: none;
+    display: flex;
+    text-align: left
+}
+
+.agenda ul li .icon-a {
+    width: 20%;
+}
+
+.agenda ul li h2 {
+    width: 100%;
+}
+
+.agenda ul li p {
+    font-size: small;
+    width: 100%;
 }

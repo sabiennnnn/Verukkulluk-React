@@ -8,6 +8,8 @@ import API from './lib/API';
 import Recept from './components/Recept';
 import Agenda from './components/Agenda';
 import Header from './components/Header';
+import Login from './components/Login';
+import Info from './components/Info';
 
 
 class App extends Component {
@@ -40,32 +42,42 @@ class App extends Component {
             <Header></Header>
           </Col>
           </Row>
+        </Container>
 
-          <Row>
-            <Col xs="12" md="4">
+        <Container>
+          <Row className="mt-5">
+            <Col xs="12" md="4" className="p-5">
               <Row>
                 <Col xs="12" md="12" >
                   <Agenda></Agenda>
                 </Col>
               </Row>
               <Row>
-                <Col xs="12" md="12" ></Col>
+                <Col xs="12" md="12" className="mt-5"><Login></Login></Col>
               </Row>
             </Col>
 
-            <Col xs="12" md="8">
+            <Col xs="12" md="8" className="p-5">
               <Row>
                 <Col xs="12" md="12" >
                   <Recept></Recept>
                 </Col>
               </Row>
               <Row>
-                <Col xs="12" md="12" ></Col>
+                <Col xs="12" md="12" className="mt-5"><Info></Info></Col>
               </Row>
             </Col>
           </Row>
+          </Container>
 
-        </Container>
+          <Container fluid>
+            <Row>
+              <Col xs="12" md="12" style={{backgroundColor: 'orange'}}>
+              </Col>
+            </Row>
+          </Container>
+
+        
       </React.Fragment>
 
     )
