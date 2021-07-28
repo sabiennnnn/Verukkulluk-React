@@ -16,8 +16,9 @@ class PageRecept extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            data: this.props.data ? this.props.data : false,
+            stateData: this.props.data,
         }
+        console.log("PageRecept: "+ this.props.data)
     }
 
     componentDidMount() {
@@ -62,11 +63,11 @@ class PageRecept extends Component {
                         <Col xs="12" md="8" className="p-4">
                         <Row>
                             <Col xs="12" md="12" >
-                            <Recept></Recept>
+                            <Recept data={this.state.stateData}></Recept>
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="12" md="12" className="mt-5"><Info></Info></Col>
+                            <Col xs="12" md="12" className="mt-5"><Info data={this.state.stateData}></Info></Col>
                         </Row>
                         </Col>
                     </Row>

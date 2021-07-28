@@ -1,12 +1,12 @@
 
 export default class API {
 
-    static fetchData = (url) => new Promise ( ( resolve, reject ) => {
+    static fetchRecipes = (url) => new Promise ( ( resolve, reject ) => {
 
         fetch(url) 
         .then(response => response.json())
-        .then(data => {
-            resolve(data); 
+        .then(result => {
+            resolve(result); 
         })
         .catch(error => { 
             reject(error)
