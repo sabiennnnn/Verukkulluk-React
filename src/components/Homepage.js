@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 import '../assets/css/main.css';
+import logo from '../assets/img/logo-v2.png';
+import '../assets/css/header.css'
 
-import Header from './Header';
+import Footer from './Footer';
+import Agenda from './Agenda';
+import Login from './Login';
+import ReceptKaart from './ReceptKaart';
+import HeaderHome from './HeaderHome';
 
 
 class Homepage extends Component {
@@ -23,26 +29,55 @@ class Homepage extends Component {
         })
     }
 
+    renderHeader() {
+        return(
+            <HeaderHome></HeaderHome>
+        )
+    }
+
     renderContent() {
         if(this.state.isLoaded) {
             return(
-                <div>Component</div>
+                <Container>
+                    <Row className="mt-5">
+                        <Col xs="12" md="4" className="p-4">
+                        <Row>
+                            <Col xs="12" md="12" >
+                            <Agenda></Agenda>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs="12" md="12" className="mt-5"><Login></Login></Col>
+                        </Row>
+                        </Col>
+            
+                        <Col xs="12" md="8" className="p-4">
+                        <Row>
+                            <Col xs="12" md="12" >
+                                <ReceptKaart></ReceptKaart>
+                            </Col>
+                        </Row>
+                        
+                        </Col>
+                    </Row>
+                </Container>
             )
         }
     }
 
-    renderHeader() {
+
+    renderFooter() {
         return(
-            <Header></Header>
+            <Footer></Footer>
         )
     }
 
     render() {
         return(
             <React.Fragment>
-                {/* this.renderHeader() */}
+                { this.renderHeader() }
                 { this.renderContent() }
-                {/* this.renderFooter() */}
+                { this.renderFooter() }
             </React.Fragment>
         )
     }

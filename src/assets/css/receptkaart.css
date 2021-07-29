@@ -1,0 +1,25 @@
+
+
+.recept-card {
+    box-shadow: 0px 0px 4px #c9c9c9;
+}
+
+
+.info-r {
+    padding: 24px;
+}
+
+.info-s {
+    padding: 24px 24px 0px 24px;
+    color: var(--darker-green);
+    font-size: medium !important;
+}
+
+.info-p {
+    padding: 0px 24px 0px 24px;
+}
+
+.info-p button {
+    padding: 0px 20px;
+    height: 54px;
+}

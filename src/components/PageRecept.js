@@ -8,6 +8,7 @@ import Agenda from '../components/Agenda';
 import Header from '../components/Header';
 import Login from '../components/Login';
 import Info from '../components/Info';
+import Footer from '../components/Footer';
 
 class PageRecept extends Component {
 
@@ -29,18 +30,9 @@ class PageRecept extends Component {
     }
 
     renderHeader() {
-            return(
-
-                <Container fluid>
-                    <Row>
-                        <Col xs="12" md="12">
-                            <Header></Header>
-                        </Col>
-                    </Row>
-                </Container>
-
-            )
-
+        return(
+            <Header></Header>
+        )
     }
     
     renderContent() {
@@ -79,16 +71,8 @@ class PageRecept extends Component {
 
     renderFooter() {
         return(
-
-            <Container fluid>
-                <Row>
-                    <Col xs="12" md="12" className="mt-5" style={{backgroundColor: 'orange', height: '200px'}}>
-                     </Col>
-                </Row>
-            </Container>
-
+            <Footer></Footer>
         )
-
     }
 
     render() {

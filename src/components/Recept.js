@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 import DetailsTopIcons from './DetailsTopIcons';
 
@@ -12,7 +13,7 @@ export default class Recept extends Component {
             isLoaded: false,
             aData: this.props.data
         }
-        // console.log("Recept.js: " + this.props.data)
+         console.log("Recept.js: " + this.props.data)
     }
 
     componentDidMount() {
@@ -33,35 +34,28 @@ export default class Recept extends Component {
                          <div className="recept-info"> 
                             <DetailsTopIcons></DetailsTopIcons>
                         </div> 
-                        
+
                         <section className="titelBe flex">
-                            
                             <h1>{this.state.aData.title}</h1>
-                            
-                            <div className="stars">
-                                <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
-                                <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
-                                <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
-                                <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
-                                <FontAwesomeIcon icon={faStar} color="beige"/>
-                            </div>
+                                <div className="stars">
+                                    <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
+                                    <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
+                                    <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
+                                    <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
+                                    <FontAwesomeIcon icon={faStar} color="beige"/>
+                                </div>
                         </section>
 
                         <section className="keuken flex">
-                            <h4>Keuken</h4>
-                            <p>{this.state.aData.kitchen.description}</p>
-                          
-                            
-                            <h4>Type</h4>
-                            <p>{this.state.aData.recipeType.description}</p>
-                            
+                            <h4>Keuken</h4><p>{this.state.aData.kitchen.description}</p>
+                            <h4>Type</h4><p>{this.state.aData.recipeType.description}</p>
                         </section>
                     
                         <section className="beschrijving" >{this.state.aData.description}</section>
             
-                        <div>
+                        <div className="recept-bottom flex">
                             <button>Op Lijst</button>
-                            <i></i>
+                            <FontAwesomeIcon icon={faHeart} color="var(--darker-red)" size='2x'/>
                         </div>
 
                     </div>

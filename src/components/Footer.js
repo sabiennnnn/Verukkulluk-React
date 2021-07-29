@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import logo from '../assets/img/logo-v2.png';
-import '../assets/css/header.css'
 import { Container, Row, Col } from 'reactstrap';
 
-export default class Header extends Component {
+export default class Footer extends Component {
 
     constructor(props) {
         super(props);
@@ -20,32 +18,24 @@ export default class Header extends Component {
         })
     }
 
-    renderContent() {
+    renderFooter() {
         if (this.state.isLoaded) {
             return (
-                
                 <Container fluid>
                     <Row>
-                        <Col xs="12" md="12">
-                        <header className="hero-foto">
-                            <nav>
-                                <img src={logo} alt="Logo"></img>
-                            </nav>
-                        </header>
+                        <Col xs="12" md="12" className="mt-5" style={{backgroundColor: 'orange', height: '200px'}}>
                         </Col>
                     </Row>
                 </Container>
-                
-                
-                
             )
         }
     }
 
     render() {
         return (
+
             <React.Fragment>
-                {this.renderContent()}
+                { this.renderFooter() }
             </React.Fragment>
         )
     }

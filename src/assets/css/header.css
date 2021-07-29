@@ -13,3 +13,23 @@
 .hero-foto nav img {
     width: 400px;
 }
+
+.carousel {
+    height: 100%;
+    z-index: 0;
+}
+
+.carousel-root {
+    height: 100%;
+    z-index: 0;
+}
+
+.col-carousel {
+    height: 500px;
+    z-index: 0;
+}
+
+.nav-header {
+    margin-top: -400px;
+    z-index: 50000;
+}
