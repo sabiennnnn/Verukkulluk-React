@@ -15,17 +15,17 @@ class App extends Component {
     super(props);
     this.state = {
         isLoaded: false,
-        item: {}
+        item: []
     }
   }
 
   componentDidMount() {
     API.fetchRecipes('https://api.educom.nu/get/recipe')
     .then( (result) => {
-        console.log(result);
+        console.log("result: " + result);
         this.setState({
             isLoaded: true,
-            item: result[0]
+            item: result
         })
     })
     .catch( error => {
@@ -33,7 +33,6 @@ class App extends Component {
     })
 }
 
-// Data wordt goed doorgegeven, maar Recept.js en info.js (3erangs) geven error
 
   renderContent() {
     if (this.state.isLoaded) {

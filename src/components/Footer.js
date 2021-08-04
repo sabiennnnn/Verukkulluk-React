@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
+import payOff from '../assets/img/verrukkulluk-pay-off.png'
+
 export default class Footer extends Component {
 
     constructor(props) {
@@ -24,6 +26,9 @@ export default class Footer extends Component {
                 <Container fluid>
                     <Row>
                         <Col xs="12" md="12" className="mt-5" style={{backgroundColor: 'orange', height: '200px'}}>
+                            <div className="containter-footer" >
+                                <img src={payOff} alt="pay-off"/>
+                            </div>
                         </Col>
                     </Row>
                 </Container>

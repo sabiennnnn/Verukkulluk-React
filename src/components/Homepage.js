@@ -9,7 +9,7 @@ import Footer from './Footer';
 import Agenda from './Agenda';
 import Login from './Login';
 import ReceptKaart from './ReceptKaart';
-import HeaderHome from './HeaderHome';
+import Header from './Header';
 
 
 class Homepage extends Component {
@@ -18,7 +18,7 @@ class Homepage extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            data: this.props.data ? this.props.data : false,
+            appData: this.props.data
         }
     }
 
@@ -31,7 +31,7 @@ class Homepage extends Component {
 
     renderHeader() {
         return(
-            <HeaderHome></HeaderHome>
+            <Header></Header>
         )
     }
 
@@ -52,12 +52,7 @@ class Homepage extends Component {
                         </Col>
             
                         <Col xs="12" md="8" className="p-4">
-                        <Row>
-                            <Col xs="12" md="12" >
-                                <ReceptKaart></ReceptKaart>
-                            </Col>
-                        </Row>
-                        
+                                <ReceptKaart data={this.state.appData}></ReceptKaart>
                         </Col>
                     </Row>
                 </Container>

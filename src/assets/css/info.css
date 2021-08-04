@@ -82,3 +82,49 @@ li {
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
+
+.ber-li {
+    padding: 24px;
+    width: 100%;
+}
+
+.ber-div {
+    margin-bottom: 30px;
+}
+
+li .ber-step {
+    color: white;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    padding: 14px;
+    background-color: var(--darker-orange);
+    text-align: center;
+    font-size: 42px;
+    font-family: "Helvetica Neue", Arial , sans-serif !important;
+}
+
+li .ber-descr {
+    font-size: small;
+    padding-left: 20px;
+}
+
+.opm-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.opm-user {
+    display: block;
+    padding-left: 32px;
+}
+
+.opm-user h2 {
+    color: var(--darker-green);
+}
+
+.opm-user p {
+    font-size: small;
+}

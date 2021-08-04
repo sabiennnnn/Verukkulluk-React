@@ -74,6 +74,7 @@ html, body {
 .flex-st {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
 }
 
 button {
