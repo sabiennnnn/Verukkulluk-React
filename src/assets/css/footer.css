@@ -1,0 +1,16 @@
+.container-footer {
+    padding: 38px;
+}
+
+.footer-img {
+    width: 130px;
+}
+
+.footer-details {
+    color: white;
+    padding-left: 38px;
+}
+
+.footer-details h2 {
+    font-size: 60px !important;
+}

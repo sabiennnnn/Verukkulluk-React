@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+
 import logo from '../assets/img/logo-v2.png';
 import '../assets/css/header.css'
+
 import { Container, Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { slide as Menu } from 'react-burger-menu';
 
 export default class Header extends Component {
 
@@ -20,6 +24,10 @@ export default class Header extends Component {
         })
     }
 
+    showSettings (event) {
+        event.preventDefault();
+    }
+
     renderContent() {
         if (this.state.isLoaded) {
             return (
@@ -28,8 +36,14 @@ export default class Header extends Component {
                     <Row>
                         <Col xs="12" md="12">
                         <header className="hero-foto">
-                            <nav>
-                                <img src={logo} alt="Logo"></img>
+                            <nav className="flext-st">
+                                <Link to="/"><img src={logo} alt="Logo"></img></Link>
+                                <Menu right width={ '340px' } disableAutoFocus>
+                                    <a id="home" className='menu-item' href="/"> Home </a>
+                                    <a id="recept" className='menu-item' href="/recept"> Recept </a>
+                                    <a id="favorieten" className='menu-item' href="/"> Mijn favorieten </a>
+                                    <a id="boodschappen" className='menu-item' href="/"> Boodschappenlijst </a>
+                                </Menu>
                             </nav>
                         </header>
                         </Col>

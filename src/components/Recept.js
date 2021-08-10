@@ -11,9 +11,11 @@ export default class Recept extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            aData: this.props.data
+            aData: this.props.data,
+            ImageRecept: this.props.data.imageUrl
         }
          console.log("Recept.js: " + this.props.data)
+         console.log("ImageRecept: " + this.state.ImageRecept)
     }
 
     componentDidMount() {
@@ -24,11 +26,10 @@ export default class Recept extends Component {
 
     renderContent() {
         if(this.state.isLoaded) {
-
             return(
                 <React.Fragment>
                 <div className="recept-kaart">
-                    <div className="recept-foto"></div>
+                    <div className="recept-foto" style= {{backgroundImage: `url(${this.state.ImageRecept})`}} ></div>
                         
                     <div  className="recept-details">
                          <div className="recept-info"> 

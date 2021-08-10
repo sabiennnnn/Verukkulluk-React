@@ -47,7 +47,7 @@ class App extends Component {
               
               <Route path="/recept" 
               exact render={ (props) => <PageRecept { ...props }
-                                        data={this.state.item}
+                                        data={this.state.item[0]}
                                         />} />
                                         
             </React.Fragment>

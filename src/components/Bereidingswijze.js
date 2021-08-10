@@ -21,7 +21,6 @@ class Bereidingswijze extends Component {
         if(this.state.isLoaded) {
             return(
                 <ul>
-                     {/* // map array in een array */}
                 
                     {this.state.stapData.map((item, index) => {
                         return (
@@ -29,8 +28,8 @@ class Bereidingswijze extends Component {
 
                                 {item.preparations.map((option, index) =>
                                     <div className="ber-div flex-st">
-                                    <h2 className="ber-step" key={index} >{option.step}.</h2>
-                                    <p className="ber-descr" key={index} >{option.description}.</p>
+                                        <h2 className="ber-step" key={index} >{option.step}.</h2>
+                                        <p className="ber-descr" key={index} >{option.description}.</p>
                                     </div>
                                 )}
                                 

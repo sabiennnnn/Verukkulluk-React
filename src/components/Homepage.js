@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 import '../assets/css/main.css';
-import logo from '../assets/img/logo-v2.png';
 import '../assets/css/header.css'
 
 import Footer from './Footer';

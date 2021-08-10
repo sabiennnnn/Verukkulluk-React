@@ -27,7 +27,6 @@ class ReceptKaart extends Component {
 
     renderContent() {
         if(this.state.isLoaded) {
-            console.log("receptkaart: " + this.state.homeData)
             return(
                 <Row>
                     {this.state.homeData.map((kaart, id) => {
@@ -47,7 +46,7 @@ class ReceptKaart extends Component {
                                     </div>
                                     <p className="info-r">{ kaart.description }</p>
                                     <div className=" info-p flex">
-                                        <button>Smullen!</button>
+                                        <button >Smullen!</button>
                                         <DetailsTopIcons></DetailsTopIcons>
                                     </div>
                                 </div>

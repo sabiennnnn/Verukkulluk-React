@@ -58,6 +58,8 @@ li {
 
 .tab-content {
     box-shadow: 0px 0px 4px #c9c9c9;
+    height: 420px;
+    overflow: scroll;
 }
 
 .nav-item {

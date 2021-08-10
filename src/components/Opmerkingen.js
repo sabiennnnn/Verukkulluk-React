@@ -12,7 +12,6 @@ class Opmerkingen extends Component {
     }
 
     componentDidMount() {
-        // Eventueel API call
         this.setState({
             isLoaded: true
         })
