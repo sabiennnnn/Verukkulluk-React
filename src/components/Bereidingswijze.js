@@ -7,7 +7,7 @@ class Bereidingswijze extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            stapData: this.props.data,
+            recipe: this.props.recipe,
         }
     }
 
@@ -18,32 +18,27 @@ class Bereidingswijze extends Component {
     }
 
     renderContent() {
-        if(this.state.isLoaded) {
-            return(
+        if (this.state.isLoaded) {
+            return (
                 <ul>
-                
-                    {this.state.stapData.map((item, index) => {
-                        return (
-                            <li key={index} className="ber-li ">
+                    {this.state.recipe.preparations.map((preparationStep) =>
+                        <li key={preparationStep.id} className="ber-li ">
+                            <div className="ber-div flex-st">
+                                <h2 className="ber-step">{preparationStep.step}.</h2>
+                                <p className="ber-descr">{preparationStep.description}.</p>
+                            </div>
 
-                                {item.preparations.map((option, index) =>
-                                    <div className="ber-div flex-st">
-                                        <h2 className="ber-step" key={index} >{option.step}.</h2>
-                                        <p className="ber-descr" key={index} >{option.description}.</p>
-                                    </div>
-                                )}
-                                
-                            </li>
-                    )})}
+                        </li>
+                    )}
                 </ul>
             )
         }
     }
 
     render() {
-        return(
+        return (
             <React.Fragment>
-                { this.renderContent() }
+                {this.renderContent()}
             </React.Fragment>
         )
     }

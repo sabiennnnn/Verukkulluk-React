@@ -40,7 +40,7 @@ export default class Header extends Component {
                                 <Link to="/"><img src={logo} alt="Logo"></img></Link>
                                 <Menu right width={ '340px' } disableAutoFocus>
                                     <a id="home" className='menu-item' href="/"> Home </a>
-                                    <a id="recept" className='menu-item' href="/recept"> Recept </a>
+                                    <a id="recept" className='menu-item' href="/recept/1"> Recept </a>
                                     <a id="favorieten" className='menu-item' href="/"> Mijn favorieten </a>
                                     <a id="boodschappen" className='menu-item' href="/"> Boodschappenlijst </a>
                                 </Menu>

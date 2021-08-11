@@ -17,7 +17,7 @@ class Homepage extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            appData: this.props.data
+            recipes: this.props.recipes
         }
     }
 
@@ -51,7 +51,7 @@ class Homepage extends Component {
                         </Col>
             
                         <Col xs="12" md="8" className="p-4">
-                                <ReceptKaart data={this.state.appData}></ReceptKaart>
+                                <ReceptKaart recipes={this.state.recipes}></ReceptKaart>
                         </Col>
                     </Row>
                 </Container>

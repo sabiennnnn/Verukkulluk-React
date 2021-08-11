@@ -13,7 +13,7 @@ class Info extends Component {
         super(props);
         this.state = {
             activeTab: '1',
-            aData: [this.props.data],
+            recipe: this.props.recipe,
         }
     }
 
@@ -28,88 +28,87 @@ class Info extends Component {
             activeTab: toggleTo
         })
     }
-    
+
     renderContent() {
-        if(this.state.isLoaded) {
-            return(
-            <div>
-                <Nav tabs>
-                    <NavItem>
-                    <NavLink
-                        className={classnames({ active: this.state.activeTab === '1' })}
-                        onClick={() => { this.toggle('1'); }}>
-                        Ingrediënten
-                    </NavLink>
-                    </NavItem>
-                    <NavItem>
-                    <NavLink
-                        className={classnames({ active: this.state.activeTab === '2' })}
-                        onClick={() => { this.toggle('2'); }}>
-                        Bereidingswijze
-                    </NavLink>
-                    </NavItem>
-                    <NavItem>
-                    <NavLink
-                        className={classnames({ active: this.state.activeTab === '3' })}
-                        onClick={() => { this.toggle('3'); }}>
-                        Opmerkingen
-                    </NavLink>
-                    </NavItem>
-                </Nav>
-                <TabContent activeTab={this.state.activeTab}>
-                    <TabPane tabId="1">
-                    <Row>
-                        <Col sm="12">
-                            {/* // pasta saus afb /recipes ipv /recipe //*/}
-                            <ul>
-                                {this.state.aData.map((item, index) => {
-                                    return (
-                                        <li key={index} className="list-ingr">
-                                            {item.ingredients.map((option, index)=> 
-                                            <div className="flex-st">
-                                                <div className="ingr-1" key={index}>
-                                                    <img src={option.article.image} alt="ingredient" className="afb-ingredienten"></img>
+        if (this.state.isLoaded) {
+            return (
+                <div>
+                    <Nav tabs>
+                        <NavItem>
+                            <NavLink
+                                className={classnames({ active: this.state.activeTab === '1' })}
+                                onClick={() => { this.toggle('1'); }}>
+                                Ingrediënten
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink
+                                className={classnames({ active: this.state.activeTab === '2' })}
+                                onClick={() => { this.toggle('2'); }}>
+                                Bereidingswijze
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink
+                                className={classnames({ active: this.state.activeTab === '3' })}
+                                onClick={() => { this.toggle('3'); }}>
+                                Opmerkingen
+                            </NavLink>
+                        </NavItem>
+                    </Nav>
+                    <TabContent activeTab={this.state.activeTab}>
+                        <TabPane tabId="1">
+                            <Row>
+                                <Col sm="12">
+                                    {/* // pasta saus afb /recipes ipv /recipe //*/}
+                                    <ul>
+                                        {this.state.recipe.ingredients.map((ingredient) =>
+                                            <li key={ingredient.id} className="list-ingr">
+                                                <div className="flex-st">
+                                                    <div className="ingr-1">
+                                                        <img src={ingredient.article.image} alt="ingredient" className="afb-ingredienten"></img>
+                                                    </div>
+                                                    <div className="ingr-2">
+                                                        <h2>{ingredient.article.title}</h2>
+                                                        <p>{ingredient.article.description}</p>
+                                                        <div className="flex-st">
+                                                            <h4>Hoeveelheid: </h4>
+                                                            <p>{ingredient.amount} {ingredient.article.unit}</p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div className="ingr-2" key={index}>
-                                                    <h2>{option.article.title}</h2>
-                                                    <p>{option.article.description}</p>
-                                                    <div className="flex-st" key={index}>
-                                                        <h4>Hoeveelheid: </h4>
-                                                        <p>{option.amount} {option.article.unit}</p>
-                                                    </div> 
-                                                </div>
-                                            </div>
-                                            )}
-                                        </li> )})}
-                            </ul>
-                        </Col>
-                    </Row>
-                    </TabPane>
-                    <TabPane tabId="2">
-                    <Row>
-                        <Col sm="12">
-                            <Bereidingswijze data={this.state.aData}></Bereidingswijze>
-                        </Col>
-                    </Row>
-                    </TabPane>
-                    <TabPane tabId="3">
-                    <Row>
-                        <Col sm="12">
-                            <Opmerkingen data={this.state.aData}></Opmerkingen>
-                        </Col>
-                    </Row>
-                    </TabPane>
-                </TabContent>
-            </div>
+
+                                            </li>
+                                        )}
+                                    </ul>
+                                </Col>
+                            </Row>
+                        </TabPane>
+                        <TabPane tabId="2">
+                            <Row>
+                                <Col sm="12">
+                                    <Bereidingswijze recipe={this.state.recipe}></Bereidingswijze>
+                                </Col>
+                            </Row>
+                        </TabPane>
+                        <TabPane tabId="3">
+                            <Row>
+                                <Col sm="12">
+                                    <Opmerkingen recipe={this.state.recipe}></Opmerkingen>
+                                </Col>
+                            </Row>
+                        </TabPane>
+                    </TabContent>
+                </div>
             )
         }
     }
 
     render() {
-        return(
-           <React.Fragment>
+        return (
+            <React.Fragment>
                 {/* this.renderHeader() */}
-                { this.renderContent() }
+                {this.renderContent()}
                 {/* this.renderFooter() */}
             </React.Fragment>
         )

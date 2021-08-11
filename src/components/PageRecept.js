@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import { withRouter } from 'react-router';
 
 import '../assets/css/main.css';
 
@@ -15,11 +16,11 @@ class PageRecept extends Component {
 
     constructor(props) {
         super(props);
+        const id = parseInt(this.props.match.params.id);
         this.state = {
             isLoaded: false,
-            stateData: this.props.data,
+            recipe: this.props.recipes.find(recipe => recipe.id === id),
         }
-        console.log("PageRecept: "+ this.props.data)
     }
 
     componentDidMount() {
@@ -55,11 +56,11 @@ class PageRecept extends Component {
                         <Col xs="12" md="8" className="p-4">
                         <Row>
                             <Col xs="12" md="12" >
-                            <Recept data={this.state.stateData}></Recept>
+                            <Recept recipe={this.state.recipe}></Recept>
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="12" md="12" className="mt-5"><Info data={this.state.stateData}></Info></Col>
+                            <Col xs="12" md="12" className="mt-5"><Info recipe={this.state.recipe}></Info></Col>
                         </Row>
                         </Col>
                     </Row>
@@ -89,4 +90,4 @@ class PageRecept extends Component {
 
 }
 
-export default PageRecept;
+export default withRouter(PageRecept);

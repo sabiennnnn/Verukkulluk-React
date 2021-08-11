@@ -11,7 +11,7 @@ class DetailsTopIcons extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            data: this.props.data ? this.props.data : false,
+            recipe: this.props.recipe ? this.props.recipe : false,
         }
     }
 
@@ -22,22 +22,36 @@ class DetailsTopIcons extends Component {
         })
     }
 
+    calculatePrice(recipe) {
+        let totalPrice = 0;
+
+        for (let index = 0; index < recipe.ingredients.length; index++) {
+            const ingredient = recipe.ingredients[index];
+            totalPrice += ingredient.article.price;
+        }
+
+        return totalPrice / 100;
+    }
+
+    calculateCalories(recipe) {
+        let totalCalories = 0;
+
+        for (let index = 0; index < recipe.ingredients.length; index++) {
+            const ingredient = recipe.ingredients[index];
+            totalCalories += ingredient.article.calories;
+        }
+
+        return totalCalories;
+    }
+
     renderContent() {
         if(this.state.isLoaded) {
-
-            var dataa = {
-                foto: "https://images.unsplash.com/photo-1520072959219-c595dc870360?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1453&q=80",
-                datumToegevoegd: "26-07-2021",
-                prijs: 12,
-                personen: 4,
-                calorieen: 432
-            }
 
             return(
             <ul className="info-list">
                 <li><FontAwesomeIcon icon={faUserFriends} color="var(--darker-red)" /><p>4</p></li>
-                <li><FontAwesomeIcon icon={faEuroSign} color="var(--darker-red)" /><p>{dataa.prijs}</p></li>
-                <li><FontAwesomeIcon icon={faFire} color="var(--darker-red)" /><p>{dataa.calorieen}</p></li>
+                <li><FontAwesomeIcon icon={faEuroSign} color="var(--darker-red)" /><p>{this.calculatePrice(this.state.recipe)}</p></li>
+                <li><FontAwesomeIcon icon={faFire} color="var(--darker-red)" /><p>{this.calculateCalories(this.state.recipe)}</p></li>
             </ul>
             )
         }

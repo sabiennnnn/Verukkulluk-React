@@ -11,11 +11,9 @@ export default class Recept extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            aData: this.props.data,
-            ImageRecept: this.props.data.imageUrl
+            recipe: this.props.recipe,
+            ImageRecept: this.props.recipe.imageUrl
         }
-         console.log("Recept.js: " + this.props.data)
-         console.log("ImageRecept: " + this.state.ImageRecept)
     }
 
     componentDidMount() {
@@ -23,6 +21,8 @@ export default class Recept extends Component {
                 isLoaded: true
             })
     }
+
+
 
     renderContent() {
         if(this.state.isLoaded) {
@@ -33,11 +33,11 @@ export default class Recept extends Component {
                         
                     <div  className="recept-details">
                          <div className="recept-info"> 
-                            <DetailsTopIcons></DetailsTopIcons>
+                            <DetailsTopIcons recipe={this.state.recipe}></DetailsTopIcons>
                         </div> 
 
                         <section className="titelBe flex">
-                            <h1>{this.state.aData.title}</h1>
+                            <h1>{this.state.recipe.title}</h1>
                                 <div className="stars">
                                     <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
                                     <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
@@ -48,11 +48,11 @@ export default class Recept extends Component {
                         </section>
 
                         <section className="keuken flex">
-                            <h4>Keuken</h4><p>{this.state.aData.kitchen.description}</p>
-                            <h4>Type</h4><p>{this.state.aData.recipeType.description}</p>
+                            <h4>Keuken</h4><p>{this.state.recipe.kitchen.description}</p>
+                            <h4>Type</h4><p>{this.state.recipe.recipeType.description}</p>
                         </section>
                     
-                        <section className="beschrijving" >{this.state.aData.description}</section>
+                        <section className="beschrijving" >{this.state.recipe.description}</section>
             
                         <div className="recept-bottom flex">
                             <button>Op Lijst</button>

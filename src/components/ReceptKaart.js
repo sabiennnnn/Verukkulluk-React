@@ -7,6 +7,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import '../assets/css/main.css'
 import '../assets/css/receptkaart.css'
 import DetailsTopIcons from './DetailsTopIcons';
+import { Link } from 'react-router-dom';
 
 class ReceptKaart extends Component {
 
@@ -14,7 +15,7 @@ class ReceptKaart extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            homeData: this.props.data  
+            recipes: this.props.recipes  
         }
     }
 
@@ -29,13 +30,13 @@ class ReceptKaart extends Component {
         if(this.state.isLoaded) {
             return(
                 <Row>
-                    {this.state.homeData.map((kaart, id) => {
+                    {this.state.recipes.map((recipe, id) => {
                         return(
                             <Col xs="12" md="6" key={id}>
                                 <div className="recept-card">
-                                    <img src={ kaart.imageUrl } style={{width: "100%"}}></img>
+                                    <img src={ recipe.imageUrl } style={{width: "100%"}}></img>
                                     <div className="info-s flex">
-                                        <h2>{ kaart.title }</h2>
+                                        <h2>{ recipe.title }</h2>
                                         <div className="stars">
                                             <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
                                             <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
@@ -44,10 +45,10 @@ class ReceptKaart extends Component {
                                             <FontAwesomeIcon icon={faStar} color="beige"/>
                                         </div>
                                     </div>
-                                    <p className="info-r">{ kaart.description }</p>
+                                    <p className="info-r">{ recipe.description }</p>
                                     <div className=" info-p flex">
-                                        <button >Smullen!</button>
-                                        <DetailsTopIcons></DetailsTopIcons>
+                                        <Link to={`/recept/${recipe.id}`}><button>Smullen!</button></Link>
+                                        <DetailsTopIcons recipe={recipe}></DetailsTopIcons>
                                     </div>
                                 </div>
                             </Col>

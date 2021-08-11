@@ -7,7 +7,7 @@ class Opmerkingen extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            stapData: this.props.data,
+            recipe: this.props.recipe,
         }
     }
 
@@ -18,36 +18,30 @@ class Opmerkingen extends Component {
     }
 
     renderContent() {
-        if(this.state.isLoaded) {
-            return(
+        if (this.state.isLoaded) {
+            return (
                 <ul>
-                     {/* // avatar homer afb /avatar ipv /avatars //*/}
-                
-                    {this.state.stapData.map((item, index) => {
-                        return (
-                            <li key={index} className="ber-li ">
-
-                                {item.remarks.map((option, index) =>
-                                    <div className="ber-div flex-st">
-                                        <img className="opm-img" key={index} src={option.user.avatar}/>
-                                        <div className="opm-user">
-                                            <h2 key={index}>{option.user.name}</h2>
-                                            <p key={index} >{option.remark}.</p>
-                                        </div>
-                                    </div>
-                                )}
-                                
-                            </li>
-                    )})}
+                    {/* // avatar homer afb /avatar ipv /avatars //*/}
+                    {this.state.recipe.remarks.map((remark) =>
+                        <li key={remark.id} className="ber-li ">
+                            <div className="ber-div flex-st">
+                                <img className="opm-img" src={remark.user.avatar} />
+                                <div className="opm-user">
+                                    <h2>{remark.user.name}</h2>
+                                    <p>{remark.remark}.</p>
+                                </div>
+                            </div>
+                        </li>
+                    )}
                 </ul>
             )
         }
     }
 
     render() {
-        return(
+        return (
             <React.Fragment>
-                { this.renderContent() }
+                {this.renderContent()}
             </React.Fragment>
         )
     }

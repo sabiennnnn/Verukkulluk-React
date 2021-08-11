@@ -15,17 +15,16 @@ class App extends Component {
     super(props);
     this.state = {
         isLoaded: false,
-        item: []
+        recipes: []
     }
   }
 
   componentDidMount() {
     API.fetchRecipes('https://api.educom.nu/get/recipe')
     .then( (result) => {
-        console.log("result: " + result);
         this.setState({
             isLoaded: true,
-            item: result
+            recipes: result
         })
     })
     .catch( error => {
@@ -42,12 +41,12 @@ class App extends Component {
             <React.Fragment>
               <Route path="/" 
               exact render={ (props) => <Homepage { ...props }
-                                        data={this.state.item}
+                                        recipes={this.state.recipes}
                                         />}/>
               
-              <Route path="/recept" 
+              <Route path="/recept/:id"
               exact render={ (props) => <PageRecept { ...props }
-                                        data={this.state.item[0]}
+                                        recipes={this.state.recipes}
                                         />} />
                                         
             </React.Fragment>
