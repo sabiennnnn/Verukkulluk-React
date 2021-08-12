@@ -7,6 +7,7 @@ import './assets/css/main.css';
 import API from './lib/API';
 import PageRecept from './components/PageRecept';
 import Homepage from './components/Homepage';
+import ScrollToTop from "./components/scrollToTop";
 
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
     if (this.state.isLoaded) {
       return (
         <BrowserRouter>
+        <ScrollToTop />
           <Switch>
             <React.Fragment>
               <Route path="/" 
