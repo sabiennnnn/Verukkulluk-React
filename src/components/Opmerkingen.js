@@ -25,7 +25,7 @@ class Opmerkingen extends Component {
                     {this.state.recipe.remarks.map((remark) =>
                         <li key={remark.id} className="ber-li ">
                             <div className="ber-div flex-st">
-                                <img className="opm-img" src={remark.user.avatar} />
+                                <img className="opm-img" src={remark.user.avatar} alt="avatar" />
                                 <div className="opm-user">
                                     <h2>{remark.user.name}</h2>
                                     <p>{remark.remark}.</p>

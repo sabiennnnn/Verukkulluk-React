@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import ReactStars from 'react-rating-stars-component';
 
 import '../assets/css/main.css'
 import '../assets/css/receptkaart.css'
@@ -15,7 +14,7 @@ class ReceptKaart extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            recipes: this.props.recipes  
+            recipes: this.props.recipes
         }
     }
 
@@ -25,27 +24,37 @@ class ReceptKaart extends Component {
         })
     }
 
+    calculateStars(recipes) {
+
+            const totalStars = recipes.ratings.reduce(function (sum, curr) {
+                return sum + curr.amount / recipes.ratings.length;
+            }, 0);
+
+            return totalStars;
+    }
 
     renderContent() {
-        if(this.state.isLoaded) {
-            return(
+        if (this.state.isLoaded) {
+            return (
                 <Row>
                     {this.state.recipes.map((recipe, id) => {
-                        return(
+                        return (
                             <Col xs="12" md="6" key={id}>
                                 <div className="recept-card">
-                                    <img src={ recipe.imageUrl } style={{width: "100%"}}></img>
+                                    <img src={recipe.imageUrl} style={{ width: "100%" }} alt="afbeelding recept"></img>
                                     <div className="info-s flex">
-                                        <h2>{ recipe.title }</h2>
+                                        <h2>{recipe.title}</h2>
                                         <div className="stars">
-                                            <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
-                                            <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
-                                            <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
-                                            <FontAwesomeIcon icon={faStar} color="GoldenRod"/>
-                                            <FontAwesomeIcon icon={faStar} color="beige"/>
+                                            <ReactStars
+                                                count={5}
+                                                size={20}
+                                                activeColor="GoldenRod"
+                                                color="beige"
+                                                value={this.calculateStars(recipe)}
+                                            />
                                         </div>
                                     </div>
-                                    <p className="info-r">{ recipe.description }</p>
+                                    <p className="info-r">{recipe.description}</p>
                                     <div className=" info-p flex">
                                         <Link to={`/recept/${recipe.id}`}><button>Smullen!</button></Link>
                                         <DetailsTopIcons recipe={recipe}></DetailsTopIcons>
@@ -60,9 +69,9 @@ class ReceptKaart extends Component {
     }
 
     render() {
-        return(
+        return (
             <React.Fragment>
-                { this.renderContent() }
+                {this.renderContent()}
             </React.Fragment>
         )
     }
