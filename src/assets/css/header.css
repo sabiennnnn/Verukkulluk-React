@@ -37,6 +37,10 @@
 
 /** HAMBURGER MENU **/
 
+.horizFix {
+  --bs-gutter-x: 0rem;
+}
+
 /* Position and sizing of burger button */
 .bm-burger-button {
     position: fixed;
@@ -78,7 +82,7 @@
   Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
   */
   .bm-menu-wrap {
-    position: fixed;
+    position: absolute;
     height: 100%;
     top: 0px;
   }
@@ -119,4 +123,40 @@
   .bm-overlay {
     background: rgba(255, 255, 255, 0.5) !important;
     top: 0px;
+    right: 0px;
   }
+
+
+
+  /** SEARCH BAR **/
+  .wrap-menu {
+    display: block;
+    width: 100px;
+  }
+
+  .search-wrapper {
+    width: 28vw;
+    margin-top: 34px;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .wrap-search {
+    width: 25vw;
+    vertical-align: middle;
+  }
+
+  .search-input {
+    border-radius: 18px;
+    letter-spacing: 0.4px;
+    width: 200px;
+  }
+
+  :focus{outline: none;}
+
+  .effect-6{padding: 7px 14px 9px; border: 0px solid transparent; border-bottom-color: #ccc; transition: 0.4s;}
+  .effect-6:focus{padding: 7px 28px 9px; transition: 0.4s;}
+  
+
+  .effect-6 ~ .focus-border{position: absolute; height: 40px; left: 0; transition: 0.4s;}
+  .effect-6:focus ~ .focus-border{width: 200px; transition: 0.4s; border-radius: 18px; border: 2px solid var(--lighter-red);}

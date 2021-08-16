@@ -51,6 +51,8 @@ class ReceptKaart extends Component {
                                                 activeColor="GoldenRod"
                                                 color="beige"
                                                 value={this.calculateStars(recipe)}
+                                                isHalf={true}
+                                                edit={false}
                                             />
                                         </div>
                                     </div>

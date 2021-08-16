@@ -20,12 +20,13 @@ class SearchBar extends Component {
     renderContent() {
         if(this.state.isLoaded) {
             return(
-                <div>
-                    <input
+                <div className="search-wrapper">
+                    <input className="search-input effect-6"
                         type="text"
                         placeholder="Zoeken"
-
+                        id="searchbar"
                     />
+                    <span className="focus-border"></span>
                 </div>
             )
         }

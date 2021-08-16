@@ -46,7 +46,7 @@ class Homepage extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="12" md="12" className="mt-5"><Login></Login></Col>
+                            <Col xs="12" md="12" className="mt-5 p-4"><Login></Login></Col>
                         </Row>
                         </Col>
             

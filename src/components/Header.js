@@ -7,6 +7,9 @@ import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 
+import Searchbar from './SearchBar';
+import SearchBar from './SearchBar';
+
 export default class Header extends Component {
 
     constructor(props) {
@@ -33,17 +36,22 @@ export default class Header extends Component {
             return (
                 
                 <Container fluid>
-                    <Row>
+                    <Row className="horizFix">
                         <Col xs="12" md="12">
                         <header className="hero-foto">
-                            <nav className="flext-st">
+                            <nav className="flex">
                                 <Link to="/"><img src={logo} alt="Logo"></img></Link>
-                                <Menu right width={ '340px' } disableAutoFocus>
-                                    <a id="home" className='menu-item' href="/"> Home </a>
-                                    <a id="recept" className='menu-item' href="/recept/1"> Recept </a>
-                                    <a id="favorieten" className='menu-item' href="/"> Mijn favorieten </a>
-                                    <a id="boodschappen" className='menu-item' href="/"> Boodschappenlijst </a>
-                                </Menu>
+                                <div className="wrap-search flex">
+                                    <SearchBar></SearchBar>
+                                    <div className="wrap-menu flex">   
+                                        <Menu right width={ '340px' } disableAutoFocus>
+                                            <a id="home" className='menu-item' href="/"> Home </a>
+                                            <a id="recept" className='menu-item' href="/recept/1"> Recept </a>
+                                            <a id="favorieten" className='menu-item' href="/"> Mijn favorieten </a>
+                                            <a id="boodschappen" className='menu-item' href="/"> Boodschappenlijst </a>
+                                        </Menu>
+                                    </div>
+                                </div>
                             </nav>
                         </header>
                         </Col>

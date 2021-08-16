@@ -51,6 +51,8 @@ export default class Recept extends Component {
                                         activeColor="GoldenRod"
                                         color="beige"
                                         value={this.calculateStars(this.state.recipe)}
+                                        isHalf={true}
+                                        edit={false}
                                     />
                                 </div>
                             </section>

@@ -1,3 +1,7 @@
+.horizFix {
+    --bs-gutter-x: 0rem;
+}
+
 .container-footer {
     padding: 38px;
 }

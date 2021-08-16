@@ -25,7 +25,7 @@ export default class Footer extends Component {
         if (this.state.isLoaded) {
             return (
                 <Container fluid>
-                    <Row>
+                    <Row className="horizFix">
                         <Col xs="12" md="12" className="mt-5" style={{backgroundColor: 'orange'}}>
                             <div className="container-footer flex-st" >
                                 <img src={payOff} className="footer-img" alt="pay-off"/>
