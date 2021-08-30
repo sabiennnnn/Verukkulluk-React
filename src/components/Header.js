@@ -7,7 +7,6 @@ import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 
-import Searchbar from './SearchBar';
 import SearchBar from './SearchBar';
 
 export default class Header extends Component {
@@ -16,7 +15,7 @@ export default class Header extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            data: this.props.data ? this.props.data : false,
+            recipes: this.props.recipes
         }
     }
 
@@ -42,7 +41,7 @@ export default class Header extends Component {
                             <nav className="flex">
                                 <Link to="/"><img src={logo} alt="Logo"></img></Link>
                                 <div className="wrap-search flex">
-                                    <SearchBar></SearchBar>
+                                    <SearchBar recipes={this.state.recipes}> </SearchBar>
                                     <div className="wrap-menu flex">   
                                         <Menu right width={ '340px' } disableAutoFocus>
                                             <a id="home" className='menu-item' href="/"> Home </a>

@@ -30,7 +30,7 @@ class Homepage extends Component {
 
     renderHeader() {
         return(
-            <Header></Header>
+            <Header recipes={this.state.recipes}></Header>
         )
     }
 

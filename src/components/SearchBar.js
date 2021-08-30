@@ -6,10 +6,10 @@ class SearchBar extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            data: this.props.data
+            recipes: this.props.recipes,
+            query: '',
         }
     }
-
 
     componentDidMount() {
         this.setState({
@@ -17,25 +17,40 @@ class SearchBar extends Component {
         })
     }
 
+    handleInputChange = () => {
+        this.setState({
+            query: this.search.value
+        })
+    }
+
     renderContent() {
-        if(this.state.isLoaded) {
-            return(
+        if (this.state.isLoaded) {
+            return (
                 <div className="search-wrapper">
-                    <input className="search-input effect-6"
+                    <form>
+                        <input 
+                        className="search-input effect-6"
                         type="text"
                         placeholder="Zoeken"
                         id="searchbar"
-                    />
-                    <span className="focus-border"></span>
+                        name="s"
+                        ref={input => this.search = input}
+                        onChange={this.handleInputChange}
+                        />
+                        <p>{this.state.query}</p>
+                    </form>
+                    <ul>
+
+                    </ul>
                 </div>
             )
         }
     }
 
     render() {
-        return(
+        return (
             <React.Fragment>
-                { this.renderContent() }
+                {this.renderContent()}
             </React.Fragment>
         )
     }
