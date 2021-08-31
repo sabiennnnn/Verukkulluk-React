@@ -19,6 +19,8 @@ class Homepage extends Component {
             isLoaded: false,
             recipes: this.props.recipes
         }
+
+        this.updateList = this.updateList.bind(this);
     }
 
     componentDidMount() {
@@ -30,11 +32,27 @@ class Homepage extends Component {
 
     renderHeader() {
         return(
-            <Header recipes={this.state.recipes}></Header>
+            <Header recipes={ this.state.recipes}
+                    handler={ this.updateList }
+            ></Header>
         )
     }
 
+    updateList(filteredRecipes) {
+        
+        this.setState({
+            isLoaded: false
+        }, () => {
+            this.setState({
+                isLoaded: true, 
+                recipes: filteredRecipes
+            })
+        })
+        
+    }
+
     renderContent() {
+
         if(this.state.isLoaded) {
             return(
                 <Container>
@@ -51,7 +69,15 @@ class Homepage extends Component {
                         </Col>
             
                         <Col xs="12" md="8" className="p-4">
-                                <ReceptKaart recipes={this.state.recipes}></ReceptKaart>
+                            <Row>
+                            {this.state.recipes.map((recipe, index) => {
+                                return(
+                                    <ReceptKaart key={index} 
+                                                 recipe={recipe}
+                                    ></ReceptKaart>
+                                )
+                            })}
+                            </Row>
                         </Col>
                     </Row>
                 </Container>

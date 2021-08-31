@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Col } from 'reactstrap';
 
 import ReactStars from 'react-rating-stars-component';
 
@@ -14,7 +14,7 @@ class ReceptKaart extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            recipes: this.props.recipes
+            recipe: this.props.recipe
         }
     }
 
@@ -26,46 +26,40 @@ class ReceptKaart extends Component {
 
     calculateStars(recipes) {
 
-            const totalStars = recipes.ratings.reduce(function (sum, curr) {
-                return sum + curr.amount / recipes.ratings.length;
-            }, 0);
+        const totalStars = recipes.ratings.reduce(function (sum, curr) {
+            return sum + curr.amount / recipes.ratings.length;
+        }, 0);
 
-            return totalStars;
+        return totalStars;
     }
 
     renderContent() {
         if (this.state.isLoaded) {
             return (
-                <Row>
-                    {this.state.recipes.map((recipe, id) => {
-                        return (
-                            <Col xs="12" md="6" key={id}>
-                                <div className="recept-card">
-                                    <img src={recipe.imageUrl} style={{ width: "100%" }} alt="afbeelding recept"></img>
-                                    <div className="info-s flex">
-                                        <h2>{recipe.title}</h2>
-                                        <div className="stars">
-                                            <ReactStars
-                                                count={5}
-                                                size={20}
-                                                activeColor="GoldenRod"
-                                                color="beige"
-                                                value={this.calculateStars(recipe)}
-                                                isHalf={true}
-                                                edit={false}
-                                            />
-                                        </div>
-                                    </div>
-                                    <p className="info-r">{recipe.description}</p>
-                                    <div className=" info-p flex">
-                                        <Link to={`/recept/${recipe.id}`}><button>Smullen!</button></Link>
-                                        <DetailsTopIcons recipe={recipe}></DetailsTopIcons>
-                                    </div>
+                    <Col xs="12" md="6" key={this.state.recipe.id} >
+                        <div className="recept-card">
+                            <img src={this.state.recipe.imageUrl} alt="afbeelding recept"></img>
+                            <div className="info-s flex">
+                                <h2>{this.state.recipe.title}</h2>
+                                <div className="stars">
+                                    <ReactStars
+                                        count={5}
+                                        size={20}
+                                        activeColor="GoldenRod"
+                                        color="beige"
+                                        value={this.calculateStars(this.state.recipe)}
+                                        isHalf={true}
+                                        edit={false}
+                                    />
                                 </div>
-                            </Col>
-                        )
-                    })}
-                </Row>
+                            </div>
+                            <p className="info-r" >{this.state.recipe.description}</p>
+                            <div className=" info-p flex">
+                                <Link to={`/recept/${this.state.recipe.id}`}><button>Smullen!</button></Link>
+                                <DetailsTopIcons recipe={this.state.recipe}></DetailsTopIcons>
+                            </div>
+                        </div>
+                    </Col>
             )
         }
     }

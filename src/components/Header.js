@@ -7,20 +7,21 @@ import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 
-import SearchBar from './SearchBar';
-
 export default class Header extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             isLoaded: false,
-            recipes: this.props.recipes
+            recipes: this.props.recipes,
+            query: '',
+            searchString: this.props.recipes
         }
     }
 
     componentDidMount() {
-        // Eventueel API call
+
+        console.log({recipes: this.state.recipes});
         this.setState({
             isLoaded: true
         })
@@ -28,6 +29,27 @@ export default class Header extends Component {
 
     showSettings (event) {
         event.preventDefault();
+    }
+
+    handleInputChange = (e) => {
+        this.setState({
+            query: e.target.value
+        }, () => {
+        this.filterArray(e.target.value);
+        }) 
+       
+    }
+
+    filterArray = (q) => {
+        let recipesData = this.state.recipes;
+
+        if (q.length > 0) {
+            recipesData = this.state.recipes.filter(recipe => {
+                return recipe.title.toString().toLowerCase().indexOf(q.toString().toLowerCase()) > -1
+                //return false;
+            });
+        }
+        this.props.handler(recipesData);
     }
 
     renderContent() {
@@ -41,7 +63,26 @@ export default class Header extends Component {
                             <nav className="flex">
                                 <Link to="/"><img src={logo} alt="Logo"></img></Link>
                                 <div className="wrap-search flex">
-                                    <SearchBar recipes={this.state.recipes}> </SearchBar>
+                                    <div className="search-wrapper">
+                                        <form>
+                                            <input
+                                                className="search-input effect-6"
+                                                type="text"
+                                                placeholder="Zoeken"
+                                                id="searchbar"
+                                                name="s"
+                                                onChange={this.handleInputChange}
+                                                value={this.state.query}
+                                            />
+                                            <div>
+                                                
+                                                <p></p>
+                                                
+                                                
+                                            </div>
+
+                                        </form>
+                                    </div>
                                     <div className="wrap-menu flex">   
                                         <Menu right width={ '340px' } disableAutoFocus>
                                             <a id="home" className='menu-item' href="/"> Home </a>

@@ -107,9 +107,7 @@ class Info extends Component {
     render() {
         return (
             <React.Fragment>
-                {/* this.renderHeader() */}
                 {this.renderContent()}
-                {/* this.renderFooter() */}
             </React.Fragment>
         )
     }

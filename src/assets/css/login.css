@@ -4,6 +4,7 @@
 .login {
     background-color: var(--darker-red);
     text-align: center;
+    border-radius: 20px;
 }
 
 .login-img {

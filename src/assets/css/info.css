@@ -86,7 +86,7 @@ li {
 }
 
 .ber-li {
-    padding: 24px;
+    padding: 24px 24px 0px 24px;
     width: 100%;
 }
 
@@ -109,6 +109,13 @@ li .ber-step {
 li .ber-descr {
     font-size: small;
     padding-left: 20px;
+    width: 80%;
+}
+
+.ul-opm {
+    overflow-x: hidden;
+    width: 100%;
+    display: block;
 }
 
 .opm-img {
@@ -116,6 +123,7 @@ li .ber-descr {
     height: 80px;
     border-radius: 50%;
     text-align: center;
+    object-fit: cover;
 }
 
 .opm-user {

@@ -20,7 +20,7 @@ class Opmerkingen extends Component {
     renderContent() {
         if (this.state.isLoaded) {
             return (
-                <ul>
+                <ul className="ul-opm">
                     {/* // avatar homer afb /avatar ipv /avatars //*/}
                     {this.state.recipe.remarks.map((remark) =>
                         <li key={remark.id} className="ber-li ">

@@ -18,6 +18,7 @@ class App extends Component {
         isLoaded: false,
         recipes: []
     }
+
   }
 
   componentDidMount() {
@@ -33,6 +34,7 @@ class App extends Component {
     })
 }
 
+ 
 
   renderContent() {
     if (this.state.isLoaded) {

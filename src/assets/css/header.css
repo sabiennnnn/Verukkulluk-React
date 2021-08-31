@@ -160,3 +160,47 @@
 
   .effect-6 ~ .focus-border{position: absolute; height: 40px; left: 0; transition: 0.4s;}
   .effect-6:focus ~ .focus-border{width: 200px; transition: 0.4s; border-radius: 18px; border: 2px solid var(--lighter-red);}
+
+
+
+  @media only screen and (max-width: 768px) {
+    .hero-foto nav img {
+      width: 230px;
+      padding-left: 10px;
+      padding-top: 4px;
+    }
+    
+    .wrap-menu {
+      display: block;
+      width: 800px;
+    }
+  
+    .wrap-search {
+      width: 65vw;
+      display: block;
+      margin: 0 auto;
+      margin-top: 30vh;
+    }
+
+    .hero-foto nav {
+      display: block;
+    }
+
+    .effect-6 {
+      background-color: rgba(255,255,255,0.4);
+      color: black !important;
+    }
+
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: beige;
+      opacity: 1; /* Firefox */
+    }
+    
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color:beige;
+    }
+    
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color:beige;
+    }
+  }
