@@ -55,16 +55,16 @@ class Homepage extends Component {
 
         if(this.state.isLoaded) {
             return(
-                <Container>
-                    <Row className="mt-5">
+                <Container fluid className="home-container"> 
+                    <Row className="mt-md-5">
                         <Col xs="12" md="4" className="p-4">
                         <Row>
-                            <Col xs="12" md="12" >
+                            <Col xs="12" md="12" className="p-4" >
                             <Agenda></Agenda>
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="12" md="12" className="mt-5 p-4"><Login></Login></Col>
+                            <Col xs="12" md="12" className="p-4"><Login></Login></Col>
                         </Row>
                         </Col>
             

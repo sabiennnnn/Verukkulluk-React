@@ -36,7 +36,7 @@ class ReceptKaart extends Component {
     renderContent() {
         if (this.state.isLoaded) {
             return (
-                    <Col xs="12" md="6" key={this.state.recipe.id} >
+                    <Col xs="12" md="6" key={this.state.recipe.id} className="p-4">
                         <div className="recept-card">
                             <img src={this.state.recipe.imageUrl} alt="afbeelding recept"></img>
                             <div className="info-s flex">

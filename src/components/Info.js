@@ -71,7 +71,7 @@ class Info extends Component {
                                                     <div className="ingr-2">
                                                         <h2>{ingredient.article.title}</h2>
                                                         <p>{ingredient.article.description}</p>
-                                                        <div className="flex-st">
+                                                        <div className="flex-st-mb">
                                                             <h4>Hoeveelheid: </h4>
                                                             <p>{ingredient.amount} {ingredient.article.unit}</p>
                                                         </div>

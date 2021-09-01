@@ -89,6 +89,7 @@ export default class Header extends Component {
                                             <a id="recept" className='menu-item' href="/recept/1"> Recept </a>
                                             <a id="favorieten" className='menu-item' href="/"> Mijn favorieten </a>
                                             <a id="boodschappen" className='menu-item' href="/"> Boodschappenlijst </a>
+                                            <a id="toevoegen" className='menu-item' href="/recept-toevoegen"> Recept toevoegen </a>
                                         </Menu>
                                     </div>
                                 </div>

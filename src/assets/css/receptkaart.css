@@ -38,3 +38,45 @@
     padding: 0px 20px;
     height: 54px;
 }
+
+@media only screen and (max-width: 768px) {
+    .recept-card {
+        height: 780px;
+    }
+
+    .recept-card img {
+        height: 260px;
+    }
+
+    .info-p {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .info-r {
+        height: 37%;
+        margin-bottom: 0;
+    }
+
+    .info-list li {
+        padding: 0;
+    }
+
+    .info-p a {
+        order: 2;
+    }
+
+    .info-p ul {
+        width: 100%;
+        margin-top: 16px;
+        margin-bottom: 0;
+        order: 1;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .info-s .stars {
+        width: 110px;
+    }
+}

@@ -1,7 +1,8 @@
 
 
 .afb-ingredienten {
-    width: 140px;
+    height: 140px;
+    max-width: 140px;
 }
 
 ul {
@@ -30,7 +31,7 @@ li {
     font-size: small;
 }
 
-.ingr-2 .flex-st h4 {
+.ingr-2 .flex-st-mb h4 {
     color: var(--darker-green);
 }
 
@@ -137,4 +138,21 @@ li .ber-descr {
 
 .opm-user p {
     font-size: small;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .afb-ingredienten {
+        width: 100px !important;
+    }
+
+    .tab-content {
+        height: 500px;
+    }
+
+    li .ber-step {
+        width: 70px;
+        height: 70px;
+        font-size: 34px;
+    }
 }

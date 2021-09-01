@@ -40,7 +40,7 @@ export default class Agenda extends Component {
         
             return(
                 <div className="agenda">
-                <img src={agendaH} alt="Agenda"></img>
+                <img src={agendaH} alt="Agenda" class="inline"></img>
                 <ul>
                     {this.state.dataAgenda.map((item, index) => {
                     return <li key={index}>

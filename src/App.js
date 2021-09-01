@@ -8,6 +8,7 @@ import API from './lib/API';
 import PageRecept from './components/PageRecept';
 import Homepage from './components/Homepage';
 import ScrollToTop from "./components/scrollToTop";
+import InvoerPage from './components/InvoerPage';
 
 
 class App extends Component {
@@ -50,6 +51,11 @@ class App extends Component {
               
               <Route path="/recept/:id"
               exact render={ (props) => <PageRecept { ...props }
+                                        recipes={this.state.recipes}
+                                        />} />
+
+              <Route path="/recept-toevoegen"
+              exact render={ (props) => <InvoerPage { ...props }
                                         recipes={this.state.recipes}
                                         />} />
                                         

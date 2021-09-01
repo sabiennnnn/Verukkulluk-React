@@ -26,7 +26,7 @@ export default class Footer extends Component {
             return (
                 <Container fluid>
                     <Row className="horizFix">
-                        <Col xs="12" md="12" className="mt-5" style={{backgroundColor: 'orange'}}>
+                        <Col xs="12" md="12" className="mt-md-5" style={{backgroundColor: 'orange'}}>
                             <div className="container-footer flex-st" >
                                 <img src={payOff} className="footer-img" alt="pay-off"/>
                                 <div className="footer-details">

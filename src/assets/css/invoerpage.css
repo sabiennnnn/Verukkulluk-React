@@ -1,0 +1,101 @@
+.inputfile {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+
+.inputfile + label {
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  width: 260px;
+  height: 70px;
+  border-radius: 34px;
+  background: var(--darker-green);
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+  font-family: "pretty_lilyregular";
+  font-size: xx-large;
+}
+
+input:hover + label,
+input:focus + label {
+  transform: scale(1.02);
+}
+
+input:focus + label {
+  outline: 1px solid #000;
+  outline: -webkit-focus-ring-color auto 2px;
+}
+
+.afb-upload {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 28px;
+}
+
+.back-afb {
+  background-color: beige;
+  border-radius: 20px;
+}
+
+.back-afb .form-group {
+  padding: 80px 0px;
+}
+
+.form-row {
+  display: flex;
+  padding-bottom:24px;
+}
+
+.form-control {
+    border: 0px;
+    border-bottom: 2px solid var(--darker-green);
+    border-radius: 0px;
+    color: var(--lighter-green);
+}
+
+.form-row > .col,
+.form-row > [class*="col-"] {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.titelInvoer {
+  padding-left: 5px;
+  font-size: 52px;
+}
+
+.h2-recept {
+  margin-top: 30px;
+  padding-left: 5px;
+  padding-bottom:5px;
+}
+
+.button-recept-invoer {
+  background-color: var(--darker-green);
+  padding: 4px 14px 1px 14px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.form-group label {
+    font-weight:300;
+}
+
+.form-control:focus {
+    border-color: black;
+    box-shadow: 0 0 0 0rem antiquewhite;
+}
+
+::placeholder {
+  color: var(--lighter-green) !important;
+  font-style: italic;
+  font-size: 16px;
+}
