@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Col, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 import { withRouter } from 'react-router';
 
@@ -11,153 +11,191 @@ import burger from '../assets/img/verrukkulluk-burger.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-class InvoerPage extends Component {
+function InvoerPage(props) {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoaded: false,
-            recipes: this.props.recipes
-        }
-    }
+    const [isLoaded, setIsLoaded] = useState(false);
+    //const [recipes, setRecipes] = useState(props);
+    const [inputFields, setInputFields] = useState([
+        { ingredientName: '', ingredientHoeveelheid: '' }
+    ]);
+    const [recipeType, setRecipeType] = useState([]);
+    const [recipeKitchen, setRecipeKitchen] = useState([]);
+    const [error, setError] = useState(null);
 
-    componentDidMount() {
+
+    useEffect(() => {
         API.fetchRecipes('https://api.educom.nu/get/kitchentype')
-            .then( (result) => {
-            this.setState({
-                isLoaded: true,
-                recipeInfo: result
-            })
-        })
-    }
-
-    renderHeader() {
-        return (
-            <Header></Header>
+        .then(
+            (result) => {
+                setIsLoaded(true);
+                setRecipeType(result.recipeType);
+                setRecipeKitchen(result.recipeKitchen);
+                console.log(result);
+            },
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            }
         )
+        
+    }, []) //empty array here
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("InputFields", inputFields);
     }
 
-    renderContent() {
-        if (this.state.isLoaded) {
+    const handleChangeInput = (index, event) => {
+        console.log(index, event.target.name);
+        const values = [...inputFields];
+        values[index][event.target.name] = event.target.value;
+        setInputFields(values);
+    }
+
+    const handleAddFields = () => {
+        setInputFields([...inputFields, { ingredientName: '', ingredientHoeveelheid: '' }])
+    }
+
+     if (error) {
+         return <div>Error: {error.message}</div>;
+     } else if (!isLoaded) {
+         return <div>Loading...</div>;
+     } else {
             return (
+            <React.Fragment>
+            <Header></Header>
                 <Container>
-                    <Row className="mt-md-5 gx-7">
-                        <Col xs="12" md="4" className="p-5 back-afb">
-                            <Form>
+                    <Form onSubmit={handleSubmit}>
+                        <Row form className="mt-md-5 gx-7">
+                            <Col xs="12" md="4" className="p-5 back-afb">
+
                                 <FormGroup>
-                                    <img src={burger} alt="upload afbeelding" className="afb-upload"/>
-                                    <Input type="file" name="afbeelding" id="afbeeldingRecept" className="inputfile"/>
+                                    <img src={burger} alt="upload afbeelding" className="afb-upload" />
+                                    <Input type="file" name="afbeelding" id="afbeeldingRecept" className="inputfile" />
                                     <Label for="afbeeldingRecept">Afbeelding toevoegen</Label>
                                 </FormGroup>
-                            </Form>
-                        </Col>
-                        <Col xs="12" md="8" className="p-5">
-                            <h1 className="titelInvoer">Recept Toevoegen</h1>
-                            <Form>
-                              <Row form>
-                                <Col md={6}>
-                                <FormGroup>
-                                    <Label for="titelRecept">Titel recept</Label>
-                                    <Input type="text" name="titelRecept" id="titelRecept" placeholder="spaghetti"/>
-                                </FormGroup>
-                                </Col>
-                              </Row>
-                              <Row form>
-                                  <Col md={12}>
-                                <FormGroup>
-                                    <Label for="omschrRecept">Receptomschrijving</Label>
-                                    <Input type="textarea" name="text" id="omschrRecept" placeholder="overheerijk recept van mijn oma"/>
-                                </FormGroup>
-                                </Col>
-                                </Row>
+
+                            </Col>
+
+                            <Col xs="12" md="8" className="p-5">
+                                <h1 className="titelInvoer">Recept Toevoegen</h1>
+
                                 <Row form>
-                                  <Col md={6}>
-                                    <FormGroup>
-                                        <Label for="keukenRecept">Keuken</Label>
-                                        <Input type="select" name="select" id="keukenRecept">
-                                        <option selected disabled hidden>selecteer...</option>
-                                        {this.state.recipeInfo.recipeKitchen.map((keuken) => {
-                                            return(
-                                                <option 
-                                                key={keuken.id}
-                                                value={keuken.id}>{keuken.description}</option>
-                                            )})}
-                                        </Input>
-                                    </FormGroup>
+                                    <Col md={6}>
+                                        <FormGroup>
+                                            <Label for="titelRecept">Titel recept</Label>
+                                            <Input type="text" name="titelRecept" id="titelRecept" placeholder="spaghetti" />
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
+
+                                <Row form>
+                                    <Col md={12}>
+                                        <FormGroup>
+                                            <Label for="omschrRecept">Receptomschrijving</Label>
+                                            <Input type="textarea" name="text" id="omschrRecept" placeholder="overheerijk recept van mijn oma" />
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
+
+                                <Row form>
+                                    <Col md={6}>
+                                        <FormGroup>
+                                            <Label for="keukenRecept">Keuken</Label>
+                                            <Input type="select" name="select" id="keukenRecept" defaultValue="0">
+                                                <option value="0" disabled hidden>selecteer...</option>
+                                                { recipeKitchen.map((keuken) => {
+                                                    return (
+                                                        <option
+                                                            key={keuken.id}
+                                                            value={keuken.id}>{keuken.description}</option>
+                                                    )
+                                                })}
+                                            </Input>
+                                        </FormGroup>
                                     </Col><Col md={6}>
-                                    <FormGroup>
-                                        <Label for="typeRecept">Type</Label>
-                                        <Input type="select" name="select" id="typeRecept">
-                                        <option selected disabled hidden>selecteer...</option>
-                                        {this.state.recipeInfo.recipeType.map((type) => {
-                                            return(
-                                                <option 
-                                                key={type.id} 
-                                                value={type.id}>{type.description}
-                                                </option>
-                                            )})}
-                                        </Input>
-                                    </FormGroup>
+                                        <FormGroup>
+                                            <Label for="typeRecept">Type</Label>
+                                            <Input type="select" name="select" id="typeRecept" defaultValue="0">
+                                                <option value="0" disabled hidden>selecteer...</option>
+                                                {recipeType.map((type) => {
+                                                    return (
+                                                        <option
+                                                            key={type.id}
+                                                            value={type.id}>{type.description}
+                                                        </option>
+                                                    )
+                                                })}
+                                            </Input>
+                                        </FormGroup>
                                     </Col>
                                 </Row>
-                            </Form>
-                            <h2 className="h2-recept">Voeg ingrediënten toe</h2>
-                            <Form>
+
+                                <h2 className="h2-recept">Voeg ingrediënten toe</h2>
+
+                                <Row form className="container">
+                                    {inputFields.map((inputField, index) => (
+                                       
+                                            <div key={index} className="flex" style={{marginTop: 14}}>
+                                            <Col md={5} >
+                                                <FormGroup>
+                                                    <Label for="ingredientName" >Naam ingrediënt</Label>
+                                                    <Input type="text"
+                                                        name="ingredientName"
+                                                        id="ingredientName"
+                                                        placeholder="melk" 
+                                                        value={inputField.ingredientName}
+                                                        onChange={event => handleChangeInput(index, event)}/>
+                                                </FormGroup>
+                                            </Col>
+
+                                            <Col md={3}>
+                                                <FormGroup>
+                                                    <Label for="ingredientHoeveelheid" > Hoeveelheid </Label>
+                                                    <Input  type="text" 
+                                                            name="ingredientHoeveelheid" 
+                                                            id="ingredientHoeveelheid" 
+                                                            placeholder="500"
+                                                            value={inputField.ingredientHoeveelheid}
+                                                            onChange={event => handleChangeInput(index, event)} />
+                                                </FormGroup>
+                                            </Col>
+
+                                            <Col md={2}>
+                                                <FormGroup>
+                                                    <Label for="gramIngredient" >  </Label>
+                                                    <Input type="select" name="gramIngredient" id="gramIngredient" defaultValue="0">
+                                                        <option value="0" disabled hidden>selecteer...</option>
+                                                        <option value="1">gram</option>
+                                                        <option value="2">ml</option>
+                                                        <option value="3">l</option>
+                                                        <option value="4">pak</option>
+                                                    </Input>
+                                                </FormGroup>
+                                            </Col>
+
+                                            <Col md={1}>
+                                                <button className="button-recept-invoer"
+                                                        onClick={() => handleAddFields()}
+                                                ><FontAwesomeIcon icon={faPlus} size="sm" /></button>
+                                            </Col>
+                                            </div>
+                                    ))}
+                                </Row>
+
                                 <Row form>
-                                    <Col md={5}>
-                                    <FormGroup>
-                                        <Label for="naamIngredient" >Naam ingrediënt</Label>
-                                        <Input type="text" name="naamIngredient" id="naamIngredient" placeholder="melk"/>
-                                    </FormGroup>
-                                    </Col>
-
-                                    <Col md={3}>
-                                    <FormGroup>
-                                        <Label for="naamIngredient" > Hoeveelheid </Label>
-                                        <Input type="text" name="naamIngredient" id="naamIngredient" placeholder="500"/>
-                                    </FormGroup>
-                                    </Col>
-
-                                    <Col md={2}>
-                                    <FormGroup>
-                                        <Label for="gramIngredient" >  </Label>
-                                        <Input type="select" name="gramIngredient" id="gramIngredient">
-                                            <option selected disabled hidden>selecteer...</option>
-                                            <option>gram</option>
-                                            <option>ml</option>
-                                            <option>l</option>
-                                            <option>pak</option>
-                                        </Input>
-                                    </FormGroup>
-                                    </Col>
-
-                                    <Col md={1}>
-                                    <button className="button-recept-invoer"><FontAwesomeIcon icon={faPlus} size="sm"/></button>
+                                    <Col md={12}>
+                                        <button onClick={handleSubmit}>Bakkers klaar? Bakken maar!</button>
                                     </Col>
                                 </Row>
-                            </Form>
-                        </Col>
-                    </Row>
+                            </Col>
+                        </Row>
+                    </Form>
                 </Container>
+                <Footer></Footer>
+            </React.Fragment>
             )
         }
     }
-
-    renderFooter() {
-        return (
-            <Footer></Footer>
-        )
-    }
-
-    render() {
-        return (
-            <React.Fragment>
-                {this.renderHeader()}
-                {this.renderContent()}
-                {this.renderFooter()}
-            </React.Fragment>
-        )
-    }
-}
 
 export default withRouter(InvoerPage);

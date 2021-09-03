@@ -55,6 +55,10 @@ input:focus + label {
   padding-bottom:24px;
 }
 
+.container {
+  flex-direction: column;
+}
+
 .form-control {
     border: 0px;
     border-bottom: 2px solid var(--darker-green);
@@ -95,7 +99,7 @@ input:focus + label {
 }
 
 ::placeholder {
-  color: var(--lighter-green) !important;
+  color: gainsboro !important;
   font-style: italic;
   font-size: 16px;
 }
