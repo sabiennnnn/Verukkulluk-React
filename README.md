@@ -14,7 +14,7 @@ De front-end applicatie is geschreven in React.js en middels een API wordt de da
 
 ### Entity Relationship Diagram
 Dit diagram toont het conceptueel datamodel. Het is een visuele weergave van de entiteiten, relaties en regels die gelden of aanwezig zijn.
-<img src=".src/assets/img/ERD-verrukkulluk.png" alt="ERD-verrukkulluk"/>
+<img src="src/assets/img/ERD-verrukkulluk.png" alt="ERD-verrukkulluk"/>
 
 ## Prototype
 Adobe XD Prototype: https://xd.adobe.com/embed/d364d780-09f9-4671-80bc-0e0973e7e112-8637/ 

@@ -11,12 +11,16 @@ import burger from '../assets/img/verrukkulluk-burger.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-function InvoerPage(props) {
+function InvoerPage( props ) {
 
+    //const { recipes } = useLocation();
     const [isLoaded, setIsLoaded] = useState(false);
-    //const [recipes, setRecipes] = useState(props);
+    const [recipes] = useState(props.recipes);
     const [inputFields, setInputFields] = useState([
-        { ingredientName: '', ingredientHoeveelheid: '' }
+        { ingredientName: '', ingredientHoeveelheid: '', ingredientVolume: ''}
+    ]);
+    const [formInputFields, setFormInputFields] = useState([
+        { title: '', description: '', imageUrl:''}
     ]);
     const [recipeType, setRecipeType] = useState([]);
     const [recipeKitchen, setRecipeKitchen] = useState([]);
@@ -30,7 +34,7 @@ function InvoerPage(props) {
                 setIsLoaded(true);
                 setRecipeType(result.recipeType);
                 setRecipeKitchen(result.recipeKitchen);
-                console.log(result);
+                //console.log(recipes);
             },
             (error) => {
                 setIsLoaded(true);
@@ -38,15 +42,22 @@ function InvoerPage(props) {
             }
         )
         
-    }, []) //empty array here
+    }, [recipes]) 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("InputFields", inputFields);
+        console.log("formInputFields", formInputFields);
+    }
+
+    const handleChange = (event) => {
+        const formValues = {...formInputFields};
+        formValues[event.target.name] = event.target.value;
+        setFormInputFields(formValues);
     }
 
     const handleChangeInput = (index, event) => {
-        console.log(index, event.target.name);
+        //console.log(index, event.target.name);
         const values = [...inputFields];
         values[index][event.target.name] = event.target.value;
         setInputFields(values);
@@ -63,7 +74,7 @@ function InvoerPage(props) {
      } else {
             return (
             <React.Fragment>
-            <Header></Header>
+            <Header recipes={props.recipes}></Header>
                 <Container>
                     <Form onSubmit={handleSubmit}>
                         <Row form className="mt-md-5 gx-7">
@@ -71,8 +82,10 @@ function InvoerPage(props) {
 
                                 <FormGroup>
                                     <img src={burger} alt="upload afbeelding" className="afb-upload" />
-                                    <Input type="file" name="afbeelding" id="afbeeldingRecept" className="inputfile" />
-                                    <Label for="afbeeldingRecept">Afbeelding toevoegen</Label>
+                                    <Input  type="file" name="imageUrl" id="imageUrl" className="inputfile" 
+                                            value={formInputFields.imageUrl}
+                                            onChange={event => handleChange(event)} />
+                                    <Label for="imageUrl">Afbeelding toevoegen</Label>
                                 </FormGroup>
 
                             </Col>
@@ -84,7 +97,12 @@ function InvoerPage(props) {
                                     <Col md={6}>
                                         <FormGroup>
                                             <Label for="titelRecept">Titel recept</Label>
-                                            <Input type="text" name="titelRecept" id="titelRecept" placeholder="spaghetti" />
+                                            <Input  type="text" 
+                                                    name="title" 
+                                                    id="titelRecept" 
+                                                    placeholder="spaghetti" 
+                                                    value={formInputFields.title}
+                                                    onChange={event => handleChange(event)}/>
                                         </FormGroup>
                                     </Col>
                                 </Row>
@@ -92,8 +110,13 @@ function InvoerPage(props) {
                                 <Row form>
                                     <Col md={12}>
                                         <FormGroup>
-                                            <Label for="omschrRecept">Receptomschrijving</Label>
-                                            <Input type="textarea" name="text" id="omschrRecept" placeholder="overheerijk recept van mijn oma" />
+                                            <Label for="description">Receptomschrijving</Label>
+                                            <Input  type="textarea" 
+                                                    name="description" 
+                                                    id="description" 
+                                                    placeholder="overheerijk recept van mijn oma"
+                                                    value={formInputFields.description}
+                                                    onChange={event => handleChange(event)} />
                                         </FormGroup>
                                     </Col>
                                 </Row>
@@ -101,9 +124,9 @@ function InvoerPage(props) {
                                 <Row form>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="keukenRecept">Keuken</Label>
-                                            <Input type="select" name="select" id="keukenRecept" defaultValue="0">
-                                                <option value="0" disabled hidden>selecteer...</option>
+                                            <Label for="recipeKitchen">Keuken</Label>
+                                            <Input type="select" name={recipeKitchen} id="recipeKitchen" defaultValue="slct">
+                                                <option value="slct" disabled hidden selected>selecteer...</option>
                                                 { recipeKitchen.map((keuken) => {
                                                     return (
                                                         <option
@@ -115,9 +138,9 @@ function InvoerPage(props) {
                                         </FormGroup>
                                     </Col><Col md={6}>
                                         <FormGroup>
-                                            <Label for="typeRecept">Type</Label>
-                                            <Input type="select" name="select" id="typeRecept" defaultValue="0">
-                                                <option value="0" disabled hidden>selecteer...</option>
+                                            <Label for="recipeType">Type</Label>
+                                            <Input type="select" name={recipeType} id="recipeType" defaultValue="slct" >
+                                                <option value="slct" disabled hidden selected>selecteer...</option>
                                                 {recipeType.map((type) => {
                                                     return (
                                                         <option
@@ -163,13 +186,13 @@ function InvoerPage(props) {
 
                                             <Col md={2}>
                                                 <FormGroup>
-                                                    <Label for="gramIngredient" >  </Label>
-                                                    <Input type="select" name="gramIngredient" id="gramIngredient" defaultValue="0">
-                                                        <option value="0" disabled hidden>selecteer...</option>
-                                                        <option value="1">gram</option>
-                                                        <option value="2">ml</option>
-                                                        <option value="3">l</option>
-                                                        <option value="4">pak</option>
+                                                    <Label for="ingredientVolume" >  </Label>
+                                                    <Input type="select" name="ingredientVolume" id="ingredientVolume" defaultValue="0" value={inputField.ingredientVolume} onChange={event => handleChangeInput(index, event)}>
+                                                        <option value="0" disabled hidden selected>selecteer...</option>
+                                                        <option value="gram">gram</option>
+                                                        <option value="ml">ml</option>
+                                                        <option value="l">l</option>
+                                                        <option value="pak">pak</option>
                                                     </Input>
                                                 </FormGroup>
                                             </Col>

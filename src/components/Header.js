@@ -21,7 +21,7 @@ export default class Header extends Component {
 
     componentDidMount() {
 
-        console.log({recipes: this.state.recipes});
+        //console.log({recipes: this.state.recipes});
         this.setState({
             isLoaded: true
         })
