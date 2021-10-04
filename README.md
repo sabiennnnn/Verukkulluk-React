@@ -6,7 +6,7 @@ Dit project richt zich vooral op de front-end van de receptenwebsite Verrukkullu
 
 De front-end applicatie is geschreven in React.js en middels een API wordt de data uit een PHP/Symfony backend opgehaald.
 
-* React
+* React (d.m.v. Class Components)
 * HTML
 * CSS
 
