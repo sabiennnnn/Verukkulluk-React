@@ -6,12 +6,8 @@ Dit project richt zich vooral op de front-end van de receptenwebsite Verrukkullu
 
 De front-end applicatie is geschreven in React.js en middels een API wordt de data uit een PHP/Symfony backend opgehaald.
 
-<<<<<<< HEAD
 * React (met class components)
 * JavaScript
-=======
-* React (d.m.v. Class Components)
->>>>>>> ca71b95347a0605b8cf919eb3b50c2c3e2782330
 * HTML
 * CSS
 
@@ -23,13 +19,10 @@ Dit diagram toont het conceptueel datamodel. Het is een visuele weergave van de 
 
 ## Prototype
 Adobe XD Prototype: https://xd.adobe.com/embed/d364d780-09f9-4671-80bc-0e0973e7e112-8637/ 
-<<<<<<< HEAD
 
 ## Screenshots project
-Homepage
+### Homepage
 <img src="src/assets/img/mockup-verrukkulluk-1.png"/>
 
-Detailpage
+### Detailpage
 <img src="src/assets/img/mockup-verrukkulluk-2.png"/>
-=======
->>>>>>> ca71b95347a0605b8cf919eb3b50c2c3e2782330
