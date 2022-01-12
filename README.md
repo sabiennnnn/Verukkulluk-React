@@ -1,6 +1,6 @@
 # Verrukkulluk front-end React.js
 
-Dit project richt zich vooral op de front-end van de receptenwebsite Verrukkulluk. De case is bedoeld om React onder de knie te krijgen. De backend is in dit geval aangeleverd.
+Dit project richt zich vooral op de front-end van de receptenwebsite Verrukkulluk. De case is bedoeld om React onder de knie te krijgen. De backend is in dit geval aangeleverd. Dit is de eerste case waar ik mee aan de slag ging in het Traineeship Software Development
 
 ## Technologieën
 
